@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log>
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>885</ColumnWidth1></Debug-Log>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>663</ColumnWidth1>
+        <ColumnWidth2>177</ColumnWidth2>
+        <ColumnWidth3>44</ColumnWidth3>
+      </Build>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>229</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        <col-names>
+          
+          
+        <item>Disassembly</item><item>_I0</item></col-names>
+        <col-widths>
+          
+          
+        <item>500</item><item>20</item></col-widths>
+        <DisasmHistory/>
+        
+        
+      <ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
+      <Select-Ambiguous-Definitions>
+        <ColumnWidth0>440</ColumnWidth0>
+        <ColumnWidth1>62</ColumnWidth1>
+        <ColumnWidth2>754</ColumnWidth2>
+      </Select-Ambiguous-Definitions>
+      <Find-All-Declarations>
+        <ColumnWidth0>440</ColumnWidth0>
+        <ColumnWidth1>62</ColumnWidth1>
+        <ColumnWidth2>754</ColumnWidth2>
+      </Find-All-Declarations>
+      <DRIVER_DATA_LOG>
+        <PreferedWindows>
+          <Position>3</Position>
+          <ScreenPosX>0</ScreenPosX>
+          <ScreenPosY>0</ScreenPosY>
+          <Windows/>
+        </PreferedWindows>
+        <col-names>
+          <item>Program Counter</item>
+          <item>Time</item>
+        </col-names>
+        <col-widths>
+          <item>130</item>
+          <item>180</item>
+        </col-widths>
+      </DRIVER_DATA_LOG>
+      <DRIVER_INTERRUPT_LOG>
+        <PreferedWindows>
+          <Position>3</Position>
+          <ScreenPosX>0</ScreenPosX>
+          <ScreenPosY>0</ScreenPosY>
+          <Windows/>
+        </PreferedWindows>
+        <col-names>
+          <item>Execution Time</item>
+          <item>Interrupt</item>
+          <item>Program Counter</item>
+          <item>Status</item>
+          <item>Time</item>
+        </col-names>
+        <col-widths>
+          <item>180</item>
+          <item>300</item>
+          <item>100</item>
+          <item>120</item>
+          <item>180</item>
+        </col-widths>
+      </DRIVER_INTERRUPT_LOG>
+      <DRIVER_EVENT_LOG>
+        <PreferedWindows>
+          <Position>3</Position>
+          <ScreenPosX>0</ScreenPosX>
+          <ScreenPosY>0</ScreenPosY>
+          <Windows/>
+        </PreferedWindows>
+        <col-names>
+          <item>ITM1</item>
+          <item>ITM2</item>
+          <item>ITM3</item>
+          <item>ITM4</item>
+          <item>Program Counter</item>
+          <item>Time</item>
+        </col-names>
+        <col-widths>
+          <item>130</item>
+          <item>130</item>
+          <item>130</item>
+          <item>130</item>
+          <item>130</item>
+          <item>180</item>
+        </col-widths>
+      </DRIVER_EVENT_LOG>
+    </Static>
+    <Windows>
+      
+      
+      
+    <Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-15952-16723</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-15430-16733</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-4348-23081</Identity>
+            <TabName>Ambiguous Definitions</TabName>
+            <Factory>Select-Ambiguous-Definitions</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-5729-32062</Identity>
+            <TabName>Declarations</TabName>
+            <Factory>Find-All-Declarations</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-26701-16727</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>UARTTest</ExpandedNode><ExpandedNode>UARTTest/Drivers</ExpandedNode><ExpandedNode>UARTTest/Drivers/STM32F4xx_HAL_Driver</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-4681-16730</Identity>
+            <TabName>Disassembly</TabName>
+            <Factory>Disassembly</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd5></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-027F9218><key>iaridepm.enu1</key></Toolbar-027F9218></Sizes></Row0><Row1><Sizes><Toolbar-1C49B0A0><key>debuggergui.enu1</key></Toolbar-1C49B0A0></Sizes></Row1><Row2><Sizes><Toolbar-1C49B168><key>armstlink2.enu1</key></Toolbar-1C49B168></Sizes></Row2></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>711</Bottom><Right>303</Right><x>-2</x><y>-2</y><xscreen>148</xscreen><yscreen>140</yscreen><sizeHorzCX>115625</sizeHorzCX><sizeHorzCY>148620</sizeHorzCY><sizeVertCX>238281</sizeVertCX><sizeVertCY>756900</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>711</Bottom><Right>146</Right><x>-2</x><y>-2</y><xscreen>148</xscreen><yscreen>140</yscreen><sizeHorzCX>115625</sizeHorzCX><sizeHorzCY>148620</sizeHorzCY><sizeVertCX>115625</sizeVertCX><sizeVertCY>756900</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>138</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>140</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>148620</sizeHorzCY><sizeVertCX>115625</sizeVertCX><sizeVertCY>148620</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+
