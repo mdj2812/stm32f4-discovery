@@ -157,7 +157,7 @@ void DebugGuardar1sTask(void * argument)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_1s, portMAX_DELAY))
     {
-      sprintf(buffer_1s, "[Task 1s]:\t%d\r\n", counter_1s++);
+      sprintf((char*) buffer_1s, "[Task 1s]:\t%d\r\n", counter_1s++);
       cola_guardar(&colaDebug, buffer_1s);
     }
   }
@@ -172,7 +172,7 @@ void DebugGuardar2sTask(void * argument)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_2s, portMAX_DELAY))
     {
-      sprintf(buffer_2s, "[Task 2s]:\t%d\r\n", counter_2s++);
+      sprintf((char*) buffer_2s, "[Task 2s]:\t%d\r\n", counter_2s++);
       cola_guardar(&colaDebug, buffer_2s);
     }
   }
