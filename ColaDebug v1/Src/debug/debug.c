@@ -92,7 +92,7 @@ void DebugInit(void){
                 "guardar1s",          /* Text name for the task. */
                 configMINIMAL_STACK_SIZE + 16, /* Stack size in words, not bytes. */
                 ( void * ) 0,    /* Parameter passed into the task. */
-                tskIDLE_PRIORITY+2,/* Priority at which the task is created. */
+                tskIDLE_PRIORITY+1,/* Priority at which the task is created. */
                 &xGuardarHandle );      /* Used to pass out the created task's handle. */
   
   xTaskCreate(
@@ -100,7 +100,7 @@ void DebugInit(void){
                 "guardar2s",          /* Text name for the task. */
                 configMINIMAL_STACK_SIZE + 16, /* Stack size in words, not bytes. */
                 ( void * ) 0,    /* Parameter passed into the task. */
-                tskIDLE_PRIORITY+1,/* Priority at which the task is created. */
+                tskIDLE_PRIORITY+2,/* Priority at which the task is created. */
                 &xGuardarHandle );      /* Used to pass out the created task's handle. */
 
  //inicializar la UART de depuracion
@@ -164,7 +164,7 @@ void DebugGuardar1sTask(void * argument)
 }
 
 /* DebugGuardar2sTask function */
-__IO uint16_t counter_2s = 1000;
+__IO uint16_t counter_2s = 1001;
 void DebugGuardar2sTask(void * argument)
 {
   unsigned char buffer_2s[20];
