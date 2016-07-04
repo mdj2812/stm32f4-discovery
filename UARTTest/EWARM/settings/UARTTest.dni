@@ -41,6 +41,14 @@ ITMportsEnable=0
 ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
+[InterruptStripe]
+Sort=1
+Title0=EXTI0_IRQ
+Setup0=3 1 3 0 1 0 0 1407404948652039 582457007684981324
+Title1=USART2_IRQ
+Setup1=3 1 3 0 1 0 0 259801450809065483 2129048447922242237
+Title2=SysTick
+Setup2=3 1 3 0 1 0 0 259801450809065483 2129048447922242237
 [Trace2]
 Enabled=0
 ShowSource=0
@@ -76,7 +84,7 @@ ShowTimeSum=1
 SumSortOrder=0
 [InterruptLog]
 LogEnabled=1
-GraphEnabled=0
+GraphEnabled=1
 ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1

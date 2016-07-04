@@ -163,6 +163,6 @@ header file. */
 standard names. */
 #define vPortSVCHandler                                 SVC_Handler
 #define xPortPendSVHandler                              PendSV_Handler
-
+ 
 #endif /* FREERTOS_CONFIG_H */
 

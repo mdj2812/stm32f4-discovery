@@ -614,7 +614,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>Project.srec</state>
+          <state>ColaDebug.srec</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>

@@ -1,6 +1,5 @@
 
-/* Scheduler includes. */
-
+/* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
@@ -9,20 +8,30 @@
 #include "debug_UART.h"
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
+#include "string.h"
 
+/* Defines -------------------------------------------------------------------*/
+#define BUFFER_SIZE 1024
+
+/* Private variables ---------------------------------------------------------*/
 static char *msg_error = "***ERROR*** cola_leer() = -1 ????? \r\n" ;
 
-#define BUFFER_SIZE 1024
 static unsigned char buffer[BUFFER_SIZE];
 __IO uint16_t buffer_indice;
 __IO uint16_t buffer_indice_max;
 
+__IO TickType_t TaskTick;
+
+static TaskHandle_t xDebugTaskHandle;
+static TaskHandle_t xGuardar1sTaskHandle;
+static TaskHandle_t xGuardar2sTaskHandle;
 static SemaphoreHandle_t semaforo_debug_isruart;
 static SemaphoreHandle_t semaforo_debug_isrsystick_1s;
 static SemaphoreHandle_t semaforo_debug_isrsystick_2s;
 static BaseType_t xHigherPriorityTaskWoken;
 static BaseType_t xGuardarSomeTaskWoken;
 
+/* Private function prototypes -----------------------------------------------*/
 void debug_uart_isr_begin (void);
 void debug_uart_isr_end (void);
 void debug_uart_isr_tx(void);
@@ -65,10 +74,7 @@ void debug_systick_isr_end(void)
   portYIELD_FROM_ISR( xGuardarSomeTaskWoken );
 }
 
-void DebugInit(void){
-  TaskHandle_t xHandle = NULL;
-  TaskHandle_t xGuardarHandle = NULL;
-  
+void DebugInit(void){  
   //inicializar cola+mutex para almacenar mensajes
  cola_init(&colaDebug);
  //inicializar semaforo compartido entre tarea debuj y la isr de la UART
@@ -80,7 +86,7 @@ void DebugInit(void){
                 configMINIMAL_STACK_SIZE + 16, /* Stack size in words, not bytes. */
                 ( void * ) 0,    /* Parameter passed into the task. */
                 tskIDLE_PRIORITY,/* Priority at which the task is created. */
-                &xHandle );      /* Used to pass out the created task's handle. */
+                &xDebugTaskHandle );      /* Used to pass out the created task's handle. */
 
   /* definition and creation of semaforo_debug_isrsystick */
   semaforo_debug_isrsystick_1s = xSemaphoreCreateBinary();
@@ -89,19 +95,19 @@ void DebugInit(void){
   /* definition and creation of DebugGuardarTask */
   xTaskCreate(
                 DebugGuardar1sTask,       /* Function that implements the task. */
-                "guardar1s",          /* Text name for the task. */
+                "Guardar_1s",          /* Text name for the task. */
                 configMINIMAL_STACK_SIZE + 16, /* Stack size in words, not bytes. */
                 ( void * ) 0,    /* Parameter passed into the task. */
                 tskIDLE_PRIORITY+1,/* Priority at which the task is created. */
-                &xGuardarHandle );      /* Used to pass out the created task's handle. */
+                &xGuardar1sTaskHandle );      /* Used to pass out the created task's handle. */
   
   xTaskCreate(
                 DebugGuardar2sTask,       /* Function that implements the task. */
-                "guardar2s",          /* Text name for the task. */
+                "Guardar_2s",          /* Text name for the task. */
                 configMINIMAL_STACK_SIZE + 16, /* Stack size in words, not bytes. */
                 ( void * ) 0,    /* Parameter passed into the task. */
                 tskIDLE_PRIORITY+2,/* Priority at which the task is created. */
-                &xGuardarHandle );      /* Used to pass out the created task's handle. */
+                &xGuardar2sTaskHandle );      /* Used to pass out the created task's handle. */
 
  //inicializar la UART de depuracion
  debug_uart_init();
@@ -152,12 +158,15 @@ void DebugTask(void * argument)
 __IO uint16_t counter_1s = 1;
 void DebugGuardar1sTask(void * argument)
 {
-  unsigned char buffer_1s[20];
+  unsigned char buffer_1s[20], Task_name[20];
+  
+  strcpy((char*) Task_name, pcTaskGetName(xGuardar1sTaskHandle));
   for(;;)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_1s, portMAX_DELAY))
     {
-      sprintf((char*) buffer_1s, "[Task 1s]:\t%d\r\n", counter_1s++);
+      TaskTick = xTaskGetTickCount();
+      sprintf((char*) buffer_1s, "[%d\t]%s\t: %d\r\n", TaskTick, Task_name, counter_1s++);
       cola_guardar(&colaDebug, buffer_1s);
     }
   }
@@ -167,12 +176,15 @@ void DebugGuardar1sTask(void * argument)
 __IO uint16_t counter_2s = 1001;
 void DebugGuardar2sTask(void * argument)
 {
-  unsigned char buffer_2s[20];
+  unsigned char buffer_2s[20], Task_name[20];
+  
+  strcpy((char*) Task_name, pcTaskGetName(xGuardar2sTaskHandle));
   for(;;)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_2s, portMAX_DELAY))
     {
-      sprintf((char*) buffer_2s, "[Task 2s]:\t%d\r\n", counter_2s++);
+      TaskTick = xTaskGetTickCount();
+      sprintf((char*) buffer_2s, "[%d\t]%s\t: %d\r\n", TaskTick, Task_name, counter_2s++);
       cola_guardar(&colaDebug, buffer_2s);
     }
   }
