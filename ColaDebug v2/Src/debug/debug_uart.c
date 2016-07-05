@@ -18,16 +18,6 @@ extern void debug_uart_isr_tx (void);
 extern void debug_uart_isr_begin (void);
 extern void debug_uart_isr_end (void);
 
- /* Funcion vacía declarada "weak" para ser reemplazada por otra con el mismo nombre
-    pero con funcionalidad*/
-__weak void debug_uart_isr_rx (void){}
-
-__weak void debug_uart_isr_tx (void){}
-
-__weak void debug_uart_isr_begin (void){}
-
-__weak void debug_uart_isr_end (void){}
-
 void debug_uart_send (uint8_t *data, uint16_t size) {
   /* Process Locked */
   (&huartx)->pTxBuffPtr = data;

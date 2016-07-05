@@ -17,10 +17,9 @@
 static char *msg_error = "***ERROR*** cola_leer() = -1 ????? \r\n" ;
 
 static unsigned char buffer[BUFFER_SIZE];
+unsigned char temp;
 __IO uint16_t buffer_indice;
 __IO uint16_t buffer_indice_max;
-
-__IO TickType_t TaskTick;
 
 static TaskHandle_t xDebugTaskHandle;
 static TaskHandle_t xGuardar1sTaskHandle;
@@ -46,8 +45,17 @@ void debug_uart_isr_end (void){
 }
 
 /*para rellenar*/
-void debug_uart_isr_tx(){
-  xSemaphoreGiveFromISR( semaforo_debug_isruart, &xHigherPriorityTaskWoken );
+void debug_uart_isr_tx(){  
+  buffer_indice++;
+  if(buffer_indice > buffer_indice_max)
+  {
+    xSemaphoreGiveFromISR( semaforo_debug_isruart, &xHigherPriorityTaskWoken );
+  }
+  else
+  {
+    temp = buffer[buffer_indice];
+    debug_uart_send(&temp, 1);
+  }
 }
 
 void debug_uart_isr_rx(){
@@ -108,7 +116,7 @@ void DebugInit(void){
                 ( void * ) 0,    /* Parameter passed into the task. */
                 tskIDLE_PRIORITY+2,/* Priority at which the task is created. */
                 &xGuardar2sTaskHandle );      /* Used to pass out the created task's handle. */
-
+  
  //inicializar la UART de depuracion
  debug_uart_init();
 }
@@ -119,7 +127,6 @@ void DebugTask(void * argument)
 
   /* USER CODE BEGIN DebugTask */
   int i, res_leer;
-  unsigned char temp[1];
   
   /* Infinite loop */
   cola_guardar(&colaDebug, "\r\n");
@@ -141,16 +148,14 @@ void DebugTask(void * argument)
         
     //Activar transmisión de la UART para transmitir el mensaje 
     //almacenado en buffer que es de res_leer caracteres
+    buffer_indice=0;
     buffer_indice_max = res_leer-1;
-    for(buffer_indice=0; buffer_indice<=buffer_indice_max; buffer_indice++)
-    {
-      temp[0] = buffer[buffer_indice];
-      debug_uart_send(temp, 1);
+    temp = buffer[buffer_indice];
+    debug_uart_send(&temp, 1);
       
-      //Esperar a que la UART nos de permiso para continuar ..
-      //Significa que el mensaje del buffer ya se ha enviado completamente
-      xSemaphoreTake( semaforo_debug_isruart, portMAX_DELAY /* (TickType_t)10 */ );
-    }
+    //Esperar a que la UART nos de permiso para continuar ..
+    //Significa que el mensaje del buffer ya se ha enviado completamente
+    xSemaphoreTake( semaforo_debug_isruart, portMAX_DELAY /* (TickType_t)10 */ );
   }
 }
 
@@ -165,8 +170,7 @@ void DebugGuardar1sTask(void * argument)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_1s, portMAX_DELAY))
     {
-      TaskTick = xTaskGetTickCount();
-      sprintf((char*) buffer_1s, "[%d\t]%s\t: %d\r\n", TaskTick, Task_name, counter_1s++);
+      sprintf((char*) buffer_1s, "[%d\t]%s\t: %d\r\n", xTaskGetTickCount(), Task_name, counter_1s++);
       cola_guardar(&colaDebug, buffer_1s);
     }
   }
@@ -183,8 +187,7 @@ void DebugGuardar2sTask(void * argument)
   {
     if(xSemaphoreTake(semaforo_debug_isrsystick_2s, portMAX_DELAY))
     {
-      TaskTick = xTaskGetTickCount();
-      sprintf((char*) buffer_2s, "[%d\t]%s\t: %d\r\n", TaskTick, Task_name, counter_2s++);
+      sprintf((char*) buffer_2s, "[%d\t]%s\t: %d\r\n", xTaskGetTickCount(), Task_name, counter_2s++);
       cola_guardar(&colaDebug, buffer_2s);
     }
   }
