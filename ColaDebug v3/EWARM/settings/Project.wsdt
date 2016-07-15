@@ -12,7 +12,7 @@
           
           
           
-        <Column0>185</Column0><Column1>1</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
+        <Column0>136</Column0><Column1>1</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
       </Workspace>
       <Find-All-Declarations>
         <PreferedWindows>
@@ -90,7 +90,7 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>ColaDebug</ExpandedNode><ExpandedNode>ColaDebug/Application</ExpandedNode><ExpandedNode>ColaDebug/Drivers</ExpandedNode><ExpandedNode>ColaDebug/Middlewares</ExpandedNode><ExpandedNode>ColaDebug/Middlewares/FreeRTOS</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>ColaDebug</ExpandedNode><ExpandedNode>ColaDebug/Application</ExpandedNode><ExpandedNode>ColaDebug/Application/Debug</ExpandedNode><ExpandedNode>ColaDebug/Drivers</ExpandedNode><ExpandedNode>ColaDebug/Middlewares</ExpandedNode><ExpandedNode>ColaDebug/Middlewares/FreeRTOS</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
@@ -100,14 +100,14 @@
       
       
       
-    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\debug\Src\cola.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>12</YPos2><SelStart2>458</SelStart2><SelEnd2>458</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\debug\Src\debug.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>283</YPos2><SelStart2>9361</SelStart2><SelEnd2>9387</SelEnd2></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Inc\debug.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>42</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-056BC9D0><key>iaridepm.enu1</key></Toolbar-056BC9D0></Sizes></Row0><Row1><Sizes><Toolbar-18125078><key>debuggergui.enu1</key></Toolbar-18125078></Sizes></Row1><Row2><Sizes><Toolbar-1CB67FA8><key>armstlink2.enu1</key></Toolbar-1CB67FA8></Sizes></Row2></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>250</Right><x>-2</x><y>-2</y><xscreen>60</xscreen><yscreen>608</yscreen><sizeHorzCX>43924</sizeHorzCX><sizeHorzCY>838621</sizeHorzCY><sizeVertCX>184480</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>200</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>146413</sizeVertCX><sizeVertCY>275862</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-04C8BA68><key>iaridepm.enu1</key></Toolbar-04C8BA68></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>545</Bottom><Right>184</Right><x>-2</x><y>-2</y><xscreen>44</xscreen><yscreen>416</yscreen><sizeHorzCX>32211</sizeHorzCX><sizeHorzCY>573793</sizeHorzCY><sizeVertCX>136164</sizeVertCX><sizeVertCY>754483</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>135</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>137</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>188966</sizeHorzCY><sizeVertCX>108346</sizeVertCX><sizeVertCY>188966</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

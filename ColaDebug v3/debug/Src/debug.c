@@ -173,7 +173,7 @@ void DebugInit(void)
   * @}
   */
 
-/** @defgroup Debug_Exported_Functions_Group3 Debug tasks functions
+/** @defgroup Debug_Exported_Functions_Group2 Debug tasks functions
   * @{
   */
 
@@ -259,7 +259,7 @@ void DebugGuardar2sTask(void * argument)
   * @}
   */
 
-/** @defgroup Debug_Exported_Functions_Group4 Debug Systic Test ISR Functions
+/** @defgroup Debug_Exported_Functions_Group3 Debug Systic Test ISR Functions
   * @{
   */
 
