@@ -18,6 +18,10 @@ C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\EWARM/../Drivers/CMSIS/
 -I
 C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\EWARM/../Drivers/CMSIS/Device/ST/STM32F4xx/Include
 -I
+C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\EWARM\..\KNX_Lib\KNX_Ph\Inc
+-I
+C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\EWARM\..\KNX_Lib\debug\Inc
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\arm\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\arm\inc
@@ -39,6 +43,10 @@ C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Middlewares\Third_Party
 C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Drivers\CMSIS\Include
 -I
 C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+-I
+C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\KNX_Lib\KNX_Ph\Inc
+-I
+C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\KNX_Lib\debug\Inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\arm\CMSIS\Include
 -DUSE_HAL_DRIVER=1

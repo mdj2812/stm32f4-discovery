@@ -19,7 +19,7 @@
           
           
           
-        <Column0>180</Column0><Column1>25</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
+        <Column0>0</Column0><Column1>25</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -59,7 +59,7 @@
         <expressions>
           
           
-        <item>colaDebug</item><item>buffer</item><item>temp</item><item/></expressions>
+        <item>colaDebug</item><item>timer_tick</item><item>timer_state</item><item>timer_timeout</item><item>RX_buffer_indice</item><item>byte</item><item>buffer</item><item></item></expressions>
         <col-names>
           
           
@@ -71,7 +71,7 @@
           
           
           
-        <item>100</item><item>150</item><item>100</item><item>102</item></col-widths>
+        <item>100</item><item>150</item><item>100</item><item>135</item></col-widths>
       </WATCH_1>
       <TerminalIO>
         
@@ -85,7 +85,7 @@
       
       
       
-    <Wnd0>
+    <Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-8345-20508</Identity>
@@ -97,7 +97,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0></Windows>
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd4><Tabs><Tab><Identity>TabID-7858-13937</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-6209-17020</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
@@ -110,7 +110,7 @@
       
       
       
-    <Top><Row0><Sizes><Toolbar-056BC9D0><key>iaridepm.enu1</key></Toolbar-056BC9D0></Sizes></Row0><Row1><Sizes><Toolbar-18125078><key>debuggergui.enu1</key></Toolbar-18125078></Sizes></Row1><Row2><Sizes><Toolbar-1CB67FA8><key>armstlink2.enu1</key></Toolbar-1CB67FA8></Sizes></Row2></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>632</Bottom><Right>252</Right><x>-2</x><y>-2</y><xscreen>418</xscreen><yscreen>19</yscreen><sizeHorzCX>306003</sizeHorzCX><sizeHorzCY>26207</sizeHorzCY><sizeVertCX>185944</sizeVertCX><sizeVertCY>874483</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes/></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00D96410><key>iaridepm.enu1</key></Toolbar-00D96410></Sizes></Row0><Row1><Sizes><Toolbar-12838480><key>debuggergui.enu1</key></Toolbar-12838480></Sizes></Row1><Row2><Sizes><Toolbar-12838548><key>armstlink2.enu1</key></Toolbar-12838548></Sizes></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>749</Bottom><Right>65</Right><x>-2</x><y>-2</y><xscreen>157</xscreen><yscreen>8</yscreen><sizeHorzCX>122656</sizeHorzCX><sizeHorzCY>8493</sizeHorzCY><sizeVertCX>52344</sizeVertCX><sizeVertCY>797240</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>749</Bottom><Right>276</Right><x>-2</x><y>-2</y><xscreen>109</xscreen><yscreen>102</yscreen><sizeHorzCX>85156</sizeHorzCX><sizeHorzCY>108280</sizeHorzCY><sizeVertCX>217188</sizeVertCX><sizeVertCY>797240</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>100</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>102</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>108280</sizeHorzCY><sizeVertCX>85156</sizeVertCX><sizeVertCY>108280</sizeVertCY></Rect></Wnd4></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

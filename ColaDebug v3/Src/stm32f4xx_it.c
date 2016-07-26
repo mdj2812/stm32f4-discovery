@@ -34,14 +34,16 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
-#include "FreeRTOS.h"
-#include "cmsis_os.h"
+#include "KNX_TPUart.h"
+#include "KNX_Aux.h"
 #include "debug_uart.h"
-#include "debug.h"
+#include "cmsis_os.h"
 
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
+
+/* External variables --------------------------------------------------------*/
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -50,33 +52,14 @@
 /**
 * @brief This function handles System tick timer.
 */
-__IO uint32_t counter1 = 0;
-__IO uint32_t counter2 = 0;
-
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-  debug_systick_isr_begin();
-  counter1++;
-  counter2++;
-  
-  if(counter1 == 1000)
-  {
-    debug_systick_isr_1s();
-    counter1 = 0;
-  }
-  
-  if(counter2 == 2000)
-  {
-    debug_systick_isr_2s();
-    counter2 = 0;
-  }
-
+  KNX_systick_isr();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   osSystickHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-  debug_systick_isr_end();
 
   /* USER CODE END SysTick_IRQn 1 */
 }
@@ -89,20 +72,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-* @brief This function handles EXTI line0 interrupt.
-*/
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
 * @brief This function handles USART2 global interrupt.
 */
 void USART2_IRQHandler(void)
@@ -111,6 +80,23 @@ void USART2_IRQHandler(void)
   debug_uart_isr();
 
   /* USER CODE END USART2_IRQn 0 */
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
+}
+
+/**
+* @brief This function handles USART3 global interrupt.
+*/
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+
+  /* USER CODE END USART3_IRQn 0 */
+  TPUart_isr();
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

@@ -1161,22 +1161,37 @@
   <group>
     <name>Application</name>
     <group>
-      <name>Debug</name>
-      <file>
-        <name>$PROJ_DIR$\..\debug\Src\cola.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\debug\Src\debug.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\debug\Src\debug_uart.c</name>
-      </file>
-    </group>
-    <group>
       <name>EWARM</name>
       <file>
         <name>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\startup_stm32f407xx.s</name>
       </file>
+    </group>
+    <group>
+      <name>KNX_Lib</name>
+      <group>
+        <name>debug</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\cola.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\debug.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\debug_uart.c</name>
+        </file>
+      </group>
+      <group>
+        <name>KNX_Ph</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_Aux.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_Ph.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_TPUart.c</name>
+        </file>
+      </group>
     </group>
     <group>
       <name>User</name>
