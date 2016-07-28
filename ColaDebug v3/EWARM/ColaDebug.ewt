@@ -1171,25 +1171,25 @@
       <group>
         <name>debug</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\cola.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\debug\Src\cola.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\debug.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\debug\Src\debug.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\debug\Src\debug_uart.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\debug\Src\debug_uart.c</name>
         </file>
       </group>
       <group>
         <name>KNX_Ph</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_Aux.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Aux.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_Ph.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Ph.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\KNX\KNX_Lib\KNX_Ph\Src\KNX_TPUart.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_TPUart.c</name>
         </file>
       </group>
     </group>
