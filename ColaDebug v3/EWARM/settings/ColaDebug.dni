@@ -4,7 +4,7 @@ stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=377978081
+Checksum=-813976319
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -122,8 +122,7 @@ SumSortOrder=0
 mode=0
 [Breakpoints2]
 Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Inc\trcBase.h}.82.1" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\KNX_Lib\debug\Src\debug.c}.117.3" 0 0 1 "" 0 "" 0
-Count=2
+Count=1
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -132,7 +131,8 @@ Category=_ 0
 LoggingEnabled=_ 0
 LogFile=_ ""
 [Aliases]
-Count=0
+A0=_ "C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c" "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c"
+Count=1
 SuppressDialog=0
 [DriverProfiling]
 Enabled=1
