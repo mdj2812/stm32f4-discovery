@@ -83,7 +83,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  DebugInit();
+  
+  if(DebugInit() == PH_Debug_ERROR_INIT)
+  {
+    return 0;
+  }
+  
   KNX_Ph_Init();
 
   /* USER CODE BEGIN 2 */
