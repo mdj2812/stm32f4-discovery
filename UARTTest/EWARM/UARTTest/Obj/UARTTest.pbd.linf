@@ -1,8 +1,5 @@
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\UARTTest.pbd.linf
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\main.pbi
-C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_msp.pbi
-C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_it.pbi
-C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\system_stm32f4xx.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_cortex.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_dma.pbi
@@ -11,6 +8,7 @@ C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4x
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_flash_ex.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_flash_ramfunc.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_gpio.pbi
+C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_msp.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_pwr.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_pwr_ex.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_rcc.pbi
@@ -18,3 +16,5 @@ C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4x
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_tim.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_tim_ex.pbi
 C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_hal_uart.pbi
+C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\stm32f4xx_it.pbi
+C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\UARTTest\Obj\system_stm32f4xx.pbi

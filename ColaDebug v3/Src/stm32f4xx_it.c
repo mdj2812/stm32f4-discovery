@@ -56,6 +56,7 @@ void SysTick_Handler(void)
 {
   KNX_systick_isr();
   HAL_IncTick();
+  HAL_SYSTICK_IRQHandler();
   osSystickHandler();
 }
 

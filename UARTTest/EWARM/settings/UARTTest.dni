@@ -11,10 +11,10 @@ ByteLimit=50
 [StLinkDriver]
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
-stlinkserialNo=2798FD0D
+stlinkserialNo=30303031
 stlinkfoundProbes=
 [DebugChecksum]
-Checksum=1693374956
+Checksum=-1551688352
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -43,11 +43,11 @@ ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [InterruptStripe]
 Sort=1
-Title0=EXTI0_IRQ
-Setup0=3 1 3 0 1 0 0 1407404948652039 582457007684981324
-Title1=USART2_IRQ
-Setup1=3 1 3 0 1 0 0 259801450809065483 2129048447922242237
-Title2=SysTick
+Title0=SysTick
+Setup0=3 1 3 0 1 0 0 259801450809065483 2129048447922242237
+Title1=EXTI0_IRQ
+Setup1=3 1 3 0 1 0 0 1407404948652039 582457007684981324
+Title2=USART2_IRQ
 Setup2=3 1 3 0 1 0 0 259801450809065483 2129048447922242237
 [Trace2]
 Enabled=0

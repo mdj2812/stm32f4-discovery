@@ -109,7 +109,7 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityIdle, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -181,7 +181,7 @@ void SystemClock_Config(void)
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
   /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
 /** Configure pins as 
@@ -347,8 +347,22 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-
+  uint8_t i;
+  
   /* USER CODE BEGIN 5 */
+  osDelay(200);
+  /** Attempt to reset */
+  for(i=0; i<10; i++)
+  {  
+    if(KNX_Ph_Reset_request() == PH_ERROR_NONE)
+    {
+      if(KNX_Ph_Reset_request() == PH_ERROR_NONE)
+      {
+        break;
+      }
+    }
+  }
+
   /* Infinite loop */
   for(;;)
   {

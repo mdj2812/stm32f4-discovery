@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\common\bin\cspybat" -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.general.xcl" --backend -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.general.xcl" --backend -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\common\bin\cspybat" -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Public\Documents\stm32f4-discovery\UARTTest\EWARM\settings\UARTTest.UARTTest.driver.xcl" 
 
 @echo off 
 :end

@@ -66,8 +66,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-  unsigned char data[1];
-  int i;
 
   /* USER CODE END 1 */
 
@@ -84,11 +82,8 @@ int main(void)
   MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
-  for(i=0; i<10; i++)
-  {
-    while(HAL_UART_GetState(&huart2) == HAL_UART_STATE_BUSY_TX);
-    HAL_UART_Transmit_IT(&huart2, buffer, sizeof(buffer));
-  }
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_TC);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,13 +92,7 @@ int main(void)
   {
   /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */
-    if(HAL_UART_Receive_IT(&huart2, data, 1) == HAL_OK)
-    {
-      HAL_UART_Transmit_IT(&huart2, data, 1);
-    }
-    
-
+  /* USER CODE BEGIN 3 */ 
   }
   /* USER CODE END 3 */
 

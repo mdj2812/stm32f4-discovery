@@ -1,10 +1,10 @@
 [StLinkDriver]
-stlinkserialNo=2798FD0D
+stlinkserialNo=30303031
 stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=1645806411
+Checksum=-1026430542
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -142,5 +142,10 @@ Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Inc\trcBase.h}.82.1" 0 0 1 "" 0 "" 0
 Count=1
 [Aliases]
 A0=_ "C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c" "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c"
-Count=1
-SuppressDialog=0
+A1=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""
+A2=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""
+A3=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c" ""
+A4=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Middlewares\Third_Party\FreeRTOS\Source\portable\IAR\ARM_CM4F\port.c" ""
+A5=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""
+Count=6
+SuppressDialog=1

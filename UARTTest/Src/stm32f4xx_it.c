@@ -40,6 +40,7 @@ unsigned char data1 = 'e';
 unsigned char buffer1[] = {"Hello World!\n"};
 #define MAX_STRLEN 12 // this is the maximum string length of our string in characters
 unsigned char received_string[MAX_STRLEN+1]; // this will hold the recieved string
+char* bufftr;
 
 /* USER CODE END 0 */
 
@@ -119,10 +120,12 @@ void EXTI0_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+  
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
+  HAL_UART_Receive_IT(&huart2, received_string, 5);
+  HAL_UART_Transmit_IT(&huart2, (uint8_t *)bufftr, 5);
   
   /* USER CODE END USART2_IRQn 1 */
 }
