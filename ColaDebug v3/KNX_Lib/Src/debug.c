@@ -19,11 +19,16 @@
 #include "debug.h"
 #include "debug_UART.h"
 #include "KNX_Ph_TPUart.h"
-#include "KNX_Ph_Aux.h"
+#include "KNX_Aux.h"
 #include "KNX_Ph.h"
+#include "KNX_def.h"
 #include "stm32f4xx_hal.h"
 #include <stdio.h>
 #include <string.h>
+    
+/** @addtogroup KNX_Lib
+  * @{
+  */
 
 /** @defgroup   Cola_Debug Cola Debug
   * @brief      The Debug module to send messages to the monitor.
@@ -39,7 +44,7 @@
   * @{
   */
 /** \brief Current state of debug RX. */
-static RX_DEBUG_Status_t KNX_PH_STATE;
+//static RX_DEBUG_Status_t KNX_PH_STATE;
 
 /** \brief Error message put in ::DebugTask */
 static const char *msg_error = "***ERROR*** cola_leer() = -1 ????? \r\n" ;
@@ -69,20 +74,6 @@ static TaskHandle_t xDebugRXTaskHandle;
 static SemaphoreHandle_t semaforo_debugrx_isruart;
 /** character received from UART */
 static unsigned char temp;
-
-/** \brief Sending Debug message sent in \ref Cola_Debug. */
-static unsigned char Debug_Send_Msg[] = "[Debug]Message sent: /XX/\r\n";
-/** \brief ::Debug_Send_Msg digits indice. */
-#define DEBUG_SENT_INDICE ((uint8_t)22)
-/** \brief KNX TPUart Error message. */
-static unsigned char KNX_Ph_TPUART_Err_Msg[] = "[KNX TPUart]Error Code: 0xXX\r\n";
-/** \brief ::KNX_Ph_TPUART_Err_Msg digits indice. */
-#define KNX_PH_TPUART_ERROR_CODE_INDICE ((uint8_t)26)
-/** \brief Aux Error message. */
-static unsigned char Aux_Err_Msg[] = "[Aux]Error Code: 0xXX\r\n";
-/** \brief ::Aux_Err_Msg digits indice. */
-#define AUX_ERROR_MSG_INDICE ((uint8_t)19)
-
 /**
   * @}
   */
@@ -154,7 +145,7 @@ void debug_uart_isr_rx(void)
   */
 uint32_t DebugInit(void)
 {
-  KNX_PH_STATE = RX_DEBUG_IDLE;
+  //KNX_PH_STATE = RX_DEBUG_IDLE;
   
   //inicializar cola+mutex para almacenar mensajes
   cola_init(&colaDebug);
@@ -181,14 +172,14 @@ uint32_t DebugInit(void)
   //inicializar la UART de depuracion
   if(debug_uart_init())
   {
-    KNX_PH_STATE = RX_DEBUG_KNX;
+    //KNX_PH_STATE = RX_DEBUG_KNX;
     cola_guardar(&colaDebug, "\r\n");
 
     return PH_Debug_ERROR_NONE;
   }
   else
   {
-    KNX_PH_STATE = RX_DEBUG_IDLE;
+    //KNX_PH_STATE = RX_DEBUG_IDLE;
     return PH_Debug_ERROR_INIT;
   }
 }
@@ -271,23 +262,11 @@ void DebugRXTask(void * argument)
         if(res != AUX_ERROR_NONE)
         {
           RX_buffer_indice=0;
-          int2text(res, &Aux_Err_Msg[AUX_ERROR_MSG_INDICE]);
-          cola_guardar(&colaDebug, Aux_Err_Msg);
           
           continue;
         }
 
-        res = KNX_PH_TPUart_Send(&byte, 1);
-        if(res == TPUart_OK)
-        {
-          int2text(byte, &Debug_Send_Msg[DEBUG_SENT_INDICE]);
-          cola_guardar(&colaDebug, Debug_Send_Msg);
-        }
-        else
-        {
-          int2text(res, &KNX_Ph_TPUART_Err_Msg[KNX_PH_TPUART_ERROR_CODE_INDICE]);
-          cola_guardar(&colaDebug, KNX_Ph_TPUART_Err_Msg);
-        }
+        res = KNX_Ph_SendData(byte, KNX_DEFAULT_TIMEOUT);
         RX_buffer_indice = 0;
       }
     }
@@ -310,6 +289,10 @@ void DebugRXTask(void * argument)
     }
   }
 }
+/**
+  * @}
+  */
+
 /**
   * @}
   */

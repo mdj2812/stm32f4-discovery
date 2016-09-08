@@ -19,7 +19,11 @@
 #include <stdint.h>
 #include "stm32f4xx_hal.h"
 
-/** @addtogroup Cola_Debug
+/** @addtogroup KNX_Lib
+  * @{
+  */
+
+   /** @addtogroup Cola_Debug
   * @{
   */
 
@@ -69,6 +73,10 @@ uint8_t debug_uart_init(void);
 Debug_Uart_Status_t debug_uart_send (uint8_t *data, uint16_t size);
 Debug_Uart_Status_t debug_uart_receive (uint8_t *data, uint16_t size);
 void debug_uart_isr(void);
+/**
+  * @}
+  */
+
 /**
   * @}
   */

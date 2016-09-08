@@ -20,6 +20,10 @@
 #include "FreeRTOS.h"
 #include "semphr.h"
 
+/** @addtogroup KNX_Lib
+  * @{
+  */
+
 /** @addtogroup Cola_Debug
   * @{
   */
@@ -83,6 +87,10 @@ void cola_init(t_cola *p);
 /* Save/Read cola functions ***************************************************/
 int16_t cola_guardar (t_cola *p, unsigned char *msg);
 int16_t cola_leer (t_cola *p, unsigned char *msg, uint32_t l);
+/**
+  * @}
+  */
+
 /**
   * @}
   */

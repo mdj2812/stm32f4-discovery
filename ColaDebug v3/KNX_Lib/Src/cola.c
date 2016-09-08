@@ -20,6 +20,10 @@
 #include "cola.h"
 #include "stdio.h"
 
+/** @addtogroup KNX_Lib
+  * @{
+  */
+
 /** @addtogroup Cola_Debug
   * @{
   */
@@ -170,6 +174,10 @@ int16_t cola_leer (t_cola *p, unsigned char *msg, uint32_t l){
 
   return res;
 }
+
+/**
+  * @}
+  */
 
 /**
   * @}

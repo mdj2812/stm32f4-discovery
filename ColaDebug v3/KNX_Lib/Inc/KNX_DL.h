@@ -20,6 +20,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include <stdint.h>
+   
+/** @addtogroup KNX_Lib
+  * @{
+  */
 
 /** @addtogroup KNX_DL
   * @{
@@ -44,10 +48,8 @@
   * @}
   */
   
-/** \brief Max size of the Tx_LPDU_Datas */
-#define DL_TX_DATA_SIZE 4*1024
-/** \brief Max size of the Rx_LPDU_Datas */
-#define DL_RX_DATA_SIZE 4*1024
+/** \brief Max size of the frame */
+#define DL_FRAME_SIZE 22
 
 /**
   * @}
@@ -65,7 +67,7 @@
   */
 typedef enum
 {
-  DL_NOINIT     = 0x00U,        /*!< Not Initialized State                    */
+  DL_POWER_ON   = 0x00U,        /*!< Power On State                           */
   DL_RESET      = 0x01U,        /*!< Reset State                              */
   DL_NORMAL     = 0x02U,        /*!< Normal Mode                              */
   DL_MONITOR    = 0x03U,        /*!< Monitor Mode                             */
@@ -94,8 +96,22 @@ uint8_t KNX_DL_Init(void);
   * @{
   */
 
+/* Services functions  ********************************************************/
+uint8_t KNX_DL_Data_req(uint8_t Tx_FT, uint8_t Tx_DA, uint16_t Tx_AT, uint8_t Tx_Pri, uint8_t *Tx_LSDU, uint8_t Tx_LG);
+/**
+  * @}
+  */
+
+/** @addtogroup KNX_DL_Exported_Functions_Group3
+  * @{
+  */
+
 /* State functions  **********************************************************/
 DL_Status_t KNX_DL_GetState(void);
+/**
+  * @}
+  */
+
 /**
   * @}
   */

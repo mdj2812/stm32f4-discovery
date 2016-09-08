@@ -1,35 +1,48 @@
 /**
   ******************************************************************************
-  * @file       KNX_PH_TPUart.h
+  * @file       KNX_def.h
   * @author     MA Dingjie
-  * @version    V1.0.0
+  * @version    V0.0.1
   * @date       6-September-2016
-  * @brief      This file contains definitions and prototypes of functions for
-  *             TP-UART.
+  * @brief      This file contains KNX common defines,
+  *             enumerations, macros, structures definitions, extern variables.
   ******************************************************************************
   */
 
-#ifndef __KNX_Ph_TPUART
-#define __KNX_Ph_TPUART
+#ifndef __KNX_DEF
+#define __KNX_DEF
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
 #include <stdint.h>
 
-/** @addtogroup KNX_PH
-  * @{
-  */
-
-/** @addtogroup KNX_PH_TPUart
+/** @addtogroup KNX_Lib
   * @{
   */
 
 /* Exported constants --------------------------------------------------------*/
-/** @defgroup KNX_PH_TPUart_Exported_Constants TPUART Exported Constants
+/** @defgroup KNX_Lib_Constants KNX Library Constants
+  * @brief    KNX Library Constants
   * @{
+  */
+
+/** @defgroup 8_Bits_Masks 8 bits masks
+  * @{
+  */
+#define BIT0                            ((uint8_t)0x01U)    /*!< BIT0   */
+#define BIT1                            ((uint8_t)0x02U)    /*!< BIT1   */
+#define BIT2                            ((uint8_t)0x04U)    /*!< BIT2   */
+#define BIT3                            ((uint8_t)0x08U)    /*!< BIT3   */
+#define BIT4                            ((uint8_t)0x10U)    /*!< BIT4   */
+#define BIT5                            ((uint8_t)0x20U)    /*!< BIT5   */
+#define BIT6                            ((uint8_t)0x40U)    /*!< BIT6   */
+#define BIT7                            ((uint8_t)0x80U)    /*!< BIT7   */
+/**
+  * @}
   */
 
 /** @defgroup UART_Control_To Field of Services to UART
@@ -64,6 +77,7 @@
 #define State_indication_mask           ((uint8_t)0x07U)    /*!< State indication mask  */
 #define L_Data_confirm_success          ((uint8_t)0x8BU)    /*!< Transmission succeed   */
 #define L_Data_confirm_failed           ((uint8_t)0x0BU)    /*!< Transmission failed    */
+#define L_Data_confirm_mask             ((uint8_t)0x0BU)    /*!< Transmission failed    */
 /**
   * @}
   */
@@ -79,73 +93,21 @@
 /**
   * @}
   */
+   
+/** @defgroup KNX_Timeout Timeout Definition
+  * @brief    Timeout Definition
+  * @{
+  */
+#define KNX_DEFAULT_TIMEOUT     500                /*!< Default Timeout 500 ms*/
+#define KNX_MAX_DELAY           0xFFFFFFFFU        /*!< Max Delay: Infinity   */
+/**
+  * @}
+  */
 
 /**
   * @}
   */
     
-/* Exported types ------------------------------------------------------------*/
-/** @defgroup KNX_TPUart_Exported_Types KNX TPUart Exported Types
-  * @brief    TPUart Status Enumeration
-  * @{
-  */
-
-/** 
-  * @brief  TPUart Status structures definition  
-  */  
-typedef enum 
-{
-  TPUart_OK       = 0x00U,      /*!< OK                                       */
-  TPUart_ERROR    = 0x01U,      /*!< Error                                    */
-  TPUart_BUSY     = 0x02U,      /*!< Busy                                     */
-} TPUart_Status_t;
-/**
-  * @}
-  */
-
-/* Exported functions --------------------------------------------------------*/
-/** @addtogroup KNX_PH_TPUart_Exported_Functions
-  * @{
-  */
-
-/** @addtogroup KNX_PH_TPUart_Exported_Functions_Group1
-  * @{
-  */
-
-/* Initialization functions ***************************************************/
-uint8_t KNX_PH_TPUart_init(void);
-/**
-  * @}
-  */
-
-/** @addtogroup KNX_PH_TPUart_Exported_Functions_Group2
-  * @{
-  */
-
-/* Send/Receive functions  ***************************************************/
-uint8_t KNX_PH_TPUart_Send(uint8_t *data, uint16_t size);
-uint8_t KNX_PH_TPUart_Receive(uint8_t *data, uint16_t size);
-/**
-  * @}
-  */
-
-/** @addtogroup KNX_PH_TPUart_Exported_Functions_Group3
-  * @{
-  */
-/* UART Interrupt function  ***************************************************/
-void TPUart_isr(void);
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
 /**
   * @}
   */
@@ -154,4 +116,4 @@ void TPUart_isr(void);
 }
 #endif
 
-#endif /* __KNX_Ph_TPUART */
+#endif /* __KNX_DEF */

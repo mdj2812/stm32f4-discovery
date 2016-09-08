@@ -22,6 +22,10 @@
 #include <stdint.h>
 #include "debug.h"
 
+/** @addtogroup KNX_Lib
+  * @{
+  */
+
 /** @addtogroup KNX_PH
   * @{
   */
@@ -113,7 +117,8 @@ uint8_t KNX_Ph_Init(void);
 */
 
 /* Send/Receive functions  ***************************************************/
-uint8_t KNX_Ph_Send(PH_Request_t request, uint32_t timeout);
+uint8_t KNX_Ph_SendData(uint8_t data, uint32_t timeout);
+uint8_t KNX_Ph_SendRequest(PH_Request_t request, uint32_t timeout);
 uint8_t KNX_Ph_WaitFor(uint8_t res, uint32_t timeout);
 uint8_t KNX_Ph_WaitForWithMask(uint8_t *res, uint8_t resMask, uint32_t timeout);
 /**
@@ -125,8 +130,9 @@ uint8_t KNX_Ph_WaitForWithMask(uint8_t *res, uint8_t resMask, uint32_t timeout);
 */
 
 /* Services functions  ********************************************************/
-uint8_t KNX_Ph_Reset_request(void);
-uint8_t KNX_Ph_State_request(void);
+uint8_t KNX_Ph_Reset(void);
+uint8_t KNX_Ph_State(uint8_t *res);
+uint8_t KNX_Ph_Data(uint8_t *frame, uint16_t length);
 /**
   * @}
   */
@@ -137,6 +143,10 @@ uint8_t KNX_Ph_State_request(void);
 
 /* State functions  **********************************************************/
 PH_Status_t KNX_Ph_GetState(void);
+/**
+  * @}
+  */
+
 /**
   * @}
   */

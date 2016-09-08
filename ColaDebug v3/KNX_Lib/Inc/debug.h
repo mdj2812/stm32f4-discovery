@@ -17,6 +17,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "cola.h"
+   
+/** @addtogroup KNX_Lib
+  * @{
+  */
 
 /** @addtogroup Cola_Debug
   * @{
@@ -110,6 +114,10 @@ uint32_t DebugInit(void);
 /* Debug tasks functions  *****************************************************/
 void DebugTask(void * argument);
 void DebugRXTask(void * argument);
+/**
+  * @}
+  */
+
 /**
   * @}
   */

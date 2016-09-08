@@ -18,6 +18,10 @@
 #include "FreeRTOS.h"
 #include "debug_uart.h"
 
+/** @addtogroup KNX_Lib
+  * @{
+  */
+
 /** @addtogroup Cola_Debug
   * @{
   */
@@ -206,6 +210,10 @@ void debug_uart_isr(void)
   
   debug_uart_isr_end();
 }
+/**
+  * @}
+  */
+
 /**
   * @}
   */

@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file       KNX_PH_Aux.h
+  * @file       KNX_Aux.h
   * @author     MA Dingjie
   * @version    V1.0.0
   * @date       6-September-2016
@@ -8,8 +8,8 @@
   ******************************************************************************
   */
 
-#ifndef __KNX_Ph_Aux
-#define __KNX_Ph_Aux
+#ifndef __KNX_Aux
+#define __KNX_Aux
 
 #ifdef __cplusplus
  extern "C" {
@@ -18,7 +18,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 
-/** @addtogroup KNX_PH
+/** @addtogroup KNX_Lib
   * @{
   */
 
@@ -27,8 +27,8 @@
   */
 	
 /* Exported constants --------------------------------------------------------*/
-/** @defgroup KNX_Aux_Exported_Consts Auxiliary Exported Functions
-  * @brief    Auxiliary Exported Functions
+/** @defgroup KNX_Aux_Exported_Consts Auxiliary Exported constants
+  * @brief    Auxiliary Exported constants
   * @{
   */
 
@@ -43,16 +43,6 @@
   * @}
   */
     
-/** @defgroup KNX_Timeout Timeout Definition
-  * @brief    Timeout Definition
-  * @{
-  */
-#define KNX_DEFAULT_TIMEOUT     500                /*!< Default Timeout 500 ms*/
-#define KNX_MAX_DELAY           0xFFFFFFFFU        /*!< Max Delay: Infinity   */
-/**
-  * @}
-  */
-
 /**
   * @}
   */
@@ -105,6 +95,14 @@ void     KNX_systick_isr(void);
   * @}
   */
 
+/** @addtogroup KNX_Aux_Exported_Functions_Group3
+  * @{
+  */
+uint8_t KNX_VerticalParity(uint8_t *datas, uint16_t length);
+/**
+  * @}
+  */
+
 /**
   * @}
   */
@@ -121,4 +119,4 @@ void     KNX_systick_isr(void);
 }
 #endif
 
-#endif /* __KNX_Ph_Aux */
+#endif /* __KNX_Aux */

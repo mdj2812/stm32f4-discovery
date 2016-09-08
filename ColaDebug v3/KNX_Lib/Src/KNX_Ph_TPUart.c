@@ -13,9 +13,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
-#include "KNX_Ph_Aux.h"
+#include "KNX_Aux.h"
 #include "KNX_Ph_TPUart.h"
 #include "stm32f4xx_hal.h"
+
+/** @addtogroup KNX_Lib
+  * @{
+  */
 
 /** @addtogroup KNX_PH KNX Physical Layer
   * @{
@@ -194,6 +198,10 @@ void TPUart_isr(void)
   /* UART IRQ Handler function provided by driver. */
   HAL_UART_IRQHandler(&knx_huart);
 }
+/**
+  * @}
+  */
+
 /**
   * @}
   */

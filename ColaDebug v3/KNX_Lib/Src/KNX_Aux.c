@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file       KNX_PH_Aux.c
+  * @file       KNX_Aux.c
   * @author     MA Dingjie
   * @version    V1.0.0
   * @date       6-September-2016
-  * @brief      Auxiliary functions for KNX Physical Layer.
+  * @brief      Auxiliary functions for KNX Library.
   *             This file provides functions to manage following functionalities:
   *              + Conversion functions from int to text and from text to int
   *              + A basic timer
@@ -14,13 +14,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <string.h>
-#include "KNX_Ph_Aux.h"
+#include "KNX_Aux.h"
+#include "debug.h"
 
-/** @addtogroup KNX_PH KNX Physical Layer
+/** @addtogroup KNX_Lib
   * @{
   */
 
-/** @defgroup KNX_Aux KNX Physical Layer Auxiliary
+/** @defgroup KNX_Aux KNX Auxiliary
   * @{
   */
 
@@ -45,11 +46,20 @@ volatile TIMER_Status_t timer_state;
 static uint32_t timer_timeout;
 /** \brief Counter of the timer, the unit is ms */
 volatile uint32_t timer_tick;
+
+/** \brief Aux Error message. */
+static unsigned char Aux_Err_Msg[] = "[Aux]Error Code: 0xXX\r\n";
+/** \brief ::Aux_Err_Msg digits indice. */
+#define AUX_ERROR_MSG_INDICE ((uint8_t)19)
 /**
   * @}
   */
 
 /* Exported functions --------------------------------------------------------*/
+/** @defgroup KNX_Aux_Exported_Functions Auxiliary Exported Functions
+  * @{
+  */
+
 /** @defgroup KNX_Aux_Exported_Functions_Group1 KNX int/text conversion functions
   * @{
   */
@@ -94,6 +104,9 @@ uint8_t text2int(unsigned char *msg, uint8_t *value)
     
     if(i == 15)                 /* didn't found the corresponding digit */
     {
+      int2text(AUX_ERROR_BIN, &Aux_Err_Msg[AUX_ERROR_MSG_INDICE]);
+      cola_guardar(&colaDebug, Aux_Err_Msg);
+
       return AUX_ERROR_BIN;
     }
   }
@@ -108,6 +121,9 @@ uint8_t text2int(unsigned char *msg, uint8_t *value)
     
     if(i == 15)                 /* didn't found the corresponding digit */
     {
+      int2text(AUX_ERROR_BIN, &Aux_Err_Msg[AUX_ERROR_MSG_INDICE]);
+      cola_guardar(&colaDebug, Aux_Err_Msg);
+      
       return AUX_ERROR_BIN;
     }
   }
@@ -212,6 +228,37 @@ void KNX_systick_isr(void)
     }
   }
 }
+
+/**
+  * @}
+  */
+
+/** @defgroup KNX_Aux_Exported_Functions_Group3 KNX Auxiliary Vertical Parity Checker
+  * @{
+  */
+
+/**
+ *  @brief      Vertical parity checker.
+ *  @param      *datas: the trame containing \c uint8_t datas.
+ *  @param      length: the length of the trame
+ *  @retval     Vertical parity of datas: 0 for even, 1 for odd
+ */
+uint8_t KNX_VerticalParity(uint8_t *datas, uint16_t length)
+{
+  uint8_t parity = datas[0];
+  uint16_t l;
+
+  for (l = 1; l < length; l++)
+  {
+    parity ^= datas[l];
+  }
+
+  return parity;
+}
+
+/**
+  * @}
+  */
 
 /**
   * @}

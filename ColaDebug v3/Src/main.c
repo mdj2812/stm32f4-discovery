@@ -38,6 +38,7 @@
 #include "debug.h"
 #include "debug_uart.h"
 #include "KNX_Ph.h"
+#include "KNX_DL.h"
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -89,8 +90,6 @@ int main(void)
     return 0;
   }
   
-  KNX_Ph_Init();
-
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -347,10 +346,18 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-  uint8_t i;
-  
   /* USER CODE BEGIN 5 */
-  osDelay(200);
+  KNX_Ph_Init();
+
+  KNX_DL_Init();
+
+  uint8_t Tx_FT = 1;
+  uint8_t Tx_DA = 0x12;
+  uint8_t Tx_AT = 0;
+  uint8_t Tx_Pri = 1;
+  uint8_t Tx_LSDU[] = "ABCD EFGH";
+  uint8_t Tx_LG = 9;
+  KNX_DL_Data_req(Tx_FT, Tx_DA, Tx_AT, Tx_Pri, Tx_LSDU, Tx_LG);
 
   /* Infinite loop */
   for(;;)

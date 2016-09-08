@@ -16,10 +16,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include "KNX_Ph.h"
-#include "KNX_Ph_Aux.h"
+#include "KNX_Aux.h"
 #include "KNX_Ph_TPUart.h"
+#include "KNX_def.h"
 #include "cola.h"
 #include "debug.h"
+
+/** @addtogroup KNX_Lib
+  * @{
+  */
 
 /** @defgroup KNX_PH KNX Physical Layer
   * @{
@@ -38,19 +43,19 @@ static PH_Status_t KNX_PH_STATE;
 /** \brief State Debug message sent in \ref Cola_Debug. */
 static unsigned char KNX_PH_STATE_DEBUGMSG[] = "[KNX PH]KNX_PH_STATE changed to XX.\r\n";
 /** \brief ::KNX_PH_STATE_DEBUGMSG digits indice. */
-#define KNX_PH_STATE_DEBUGMSG_INDICE ((uint8_t)32)
+#define KNX_PH_STATE_DEBUGMSG_INDICE ((uint8_t)31)
 /** \brief Sending Debug message sent in \ref Cola_Debug. */
-static unsigned char KNX_PH_SEND_DEBUGMSG[] = "[KNX PH]Message sent: /XX/\r\n";
+static unsigned char KNX_PH_SEND_DEBUGMSG[] = "[KNX PH]Data sent: XX\r\n";
 /** \brief ::KNX_PH_SEND_DEBUGMSG digits indice. */
-#define KNX_PH_SEND_DEBUGMSG_INDICE ((uint8_t)23)
+#define KNX_PH_SEND_DEBUGMSG_INDICE ((uint8_t)19)
 /** \brief Receiving Debug message sent in \ref Cola_Debug. */
-static unsigned char KNX_PH_RECEIVE_DEBUGMSG[] = "[KNX PH]Message received: [XX]\r\n";
+static unsigned char KNX_PH_RECEIVE_DEBUGMSG[] = "[KNX PH]Data received: XX\r\n";
 /** \brief ::KNX_PH_RECEIVE_DEBUGMSG digits indice. */
-#define KNX_PH_RECEIVE_DEBUGMSG_INDICE ((uint8_t)27)
+#define KNX_PH_RECEIVE_DEBUGMSG_INDICE ((uint8_t)23)
 /** \brief Error Debug message sent in \ref Cola_Debug. */
-static unsigned char KNX_PH_ERROR_DEBUGMSG[] = "[KNX PH]Error code: 0xXX\r\n";
+static unsigned char KNX_PH_ERROR_DEBUGMSG[] = "[KNX PH]Error code: XX\r\n";
 /** \brief ::KNX_PH_ERROR_DEBUGMSG digits indice. */
-#define KNX_PH_ERROR_DEBUGMSG_INDICE ((uint8_t)22)
+#define KNX_PH_ERROR_DEBUGMSG_INDICE ((uint8_t)20)
 
 /** \brief Cola defined in \ref Debug */
 t_cola colaDebug;
@@ -110,12 +115,41 @@ uint8_t KNX_Ph_Init(void)
   */
 
 /**
+  * @brief      Send a data.
+  * @param      data: a \c uint8_t data.
+  * @param      timeout: timeout duration.
+  * @retval     Error code, See \ref PH_Error_Code.
+  */
+uint8_t KNX_Ph_SendData(uint8_t data, uint32_t timeout)
+{      
+  KNX_StartTimer(timeout);
+  /** Try to send the data */
+  while(KNX_GetTimerState() != TIMER_TIMEOUT)
+  {
+    if(KNX_PH_TPUart_Send(&data, 1) == TPUart_OK)
+    {
+      KNX_Ph_DebugMessage(data, SEND_DEBUG);
+      
+      KNX_ResetTimer();
+      /** \b If succeeded, return ::PH_ERROR_NONE. */
+      return PH_ERROR_NONE;
+    }
+  }
+  
+  KNX_ResetTimer();
+  KNX_Ph_DebugMessage(PH_ERROR_TIMEOUT, ERROR_DEBUG);
+
+  /** \b If timeout, return ::PH_ERROR_TIMEOUT. */
+  return PH_ERROR_TIMEOUT;
+}
+
+/**
   * @brief      Send a request.
   * @param      request: a request, see ::PH_Request_t.
   * @param      timeout: timeout duration.
   * @retval     Error code, See \ref PH_Error_Code.
   */
-uint8_t KNX_Ph_Send(PH_Request_t request, uint32_t timeout)
+uint8_t KNX_Ph_SendRequest(PH_Request_t request, uint32_t timeout)
 {
   uint8_t data;
   
@@ -233,12 +267,12 @@ uint8_t KNX_Ph_WaitForWithMask(uint8_t *res, uint8_t resMask, uint32_t timeout)
   *             ::Reset_indication.
   * @retval     Error code, See \ref PH_Error_Code.
   */
-uint8_t KNX_Ph_Reset_request(void)
+uint8_t KNX_Ph_Reset(void)
 {
   uint8_t ret;
   
   /** Send ::Ph_Reset request. */
-  ret = KNX_Ph_Send(Ph_Reset, KNX_DEFAULT_TIMEOUT);
+  ret = KNX_Ph_SendRequest(Ph_Reset, KNX_DEFAULT_TIMEOUT);
   if(ret != PH_ERROR_NONE)
   {
     /** \b If encounter a problem, return ::PH_ERROR_REQUEST  */
@@ -265,14 +299,15 @@ uint8_t KNX_Ph_Reset_request(void)
 /**
   * @brief      Requests the internal communication state from the TP-UART-IC
   *             and waiting for the ::State_indication.
+  * @param      res: response received.
   * @retval     Error code, See \ref PH_Error_Code.
   */
-uint8_t KNX_Ph_State_request(void)
+uint8_t KNX_Ph_State(uint8_t *res)
 {
-  uint8_t ret, res;
+  uint8_t ret;
   
   /** Send ::Ph_Reset request. */
-  ret = KNX_Ph_Send(Ph_State, KNX_DEFAULT_TIMEOUT);
+  ret = KNX_Ph_SendRequest(Ph_State, KNX_DEFAULT_TIMEOUT);
   if(ret != PH_ERROR_NONE)
   {
     /** \b If encounter a problem, return ::PH_ERROR_REQUEST  */
@@ -280,28 +315,57 @@ uint8_t KNX_Ph_State_request(void)
   }
     
   /** Waiting for the ::State_indication. */
-  ret = KNX_Ph_WaitForWithMask(&res, State_indication_mask, KNX_DEFAULT_TIMEOUT);
+  ret = KNX_Ph_WaitForWithMask(res, State_indication_mask, KNX_DEFAULT_TIMEOUT);
   if(ret == PH_ERROR_NONE)
   {
-    if(res == State_indication)
-    {
-      /** \b If receive the response, set state to ::PH_NORMAL. */
-      KNX_Ph_SetState(PH_NORMAL);
-      
-      /** Return ::PH_ERROR_NONE. */
-      return PH_ERROR_NONE;
-    }
-    
-    KNX_Ph_DebugMessage(PH_ERROR_STATE, ERROR_DEBUG);
-    /** Else return ::PH_ERROR_STATE. */
-    return PH_ERROR_STATE;
+    /** Return ::PH_ERROR_STATE. */
+    return PH_ERROR_NONE;
   }
   else
   {
-    /** Else return ::PH_ERROR_RESPONSE. */
+    *res = NULL;
+    
+    /** Else return ::PH_ERROR_TIMEOUT. */
     return PH_ERROR_TIMEOUT;
   }
 }
+
+/**
+  * @brief      Send datas.
+  * @param      frame: frame to be sent.
+  * @param      length: number of octets in frame.
+  * @retval     Error code, See \ref PH_Error_Code.
+  */
+uint8_t KNX_Ph_Data(uint8_t *frame, uint16_t length)
+{
+  uint8_t ret, res;
+  uint16_t i;
+  
+  /** Send frame. */
+  for(i=0; i<length; i++)
+  {
+    ret = KNX_Ph_SendData(frame[i], KNX_MAX_DELAY);
+    if(ret != PH_ERROR_NONE)
+    {
+      /** \b If encounter a problem, return ::PH_ERROR_REQUEST  */
+      return PH_ERROR_REQUEST;
+    }
+  }
+    
+  /** Waiting for the ::L_Data_confirm_success. */
+  ret = KNX_Ph_WaitForWithMask(&res, L_Data_confirm_mask, KNX_DEFAULT_TIMEOUT);
+  if(ret == PH_ERROR_NONE)
+  {
+    /** Return ::PH_ERROR_STATE. */
+    return PH_ERROR_NONE;
+  }
+  else
+  {
+    /** Else return ::PH_ERROR_TIMEOUT. */
+    return PH_ERROR_TIMEOUT;
+  }
+}
+
 /**
   * @}
   */
@@ -397,6 +461,10 @@ static void KNX_Ph_DebugMessage(uint8_t data, DEBUG_Type_t type)
       cola_guardar(&colaDebug, KNX_PH_ERROR_DEBUGMSG);
   }
 }
+/**
+  * @}
+  */
+
 /**
   * @}
   */
