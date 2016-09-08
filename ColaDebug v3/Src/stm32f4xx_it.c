@@ -34,8 +34,8 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
-#include "KNX_TPUart.h"
-#include "KNX_Aux.h"
+#include "KNX_Ph_TPUart.h"
+#include "KNX_Ph_Aux.h"
 #include "debug_uart.h"
 #include "cmsis_os.h"
 

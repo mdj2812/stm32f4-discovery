@@ -1181,15 +1181,21 @@
         </file>
       </group>
       <group>
-        <name>KNX_Ph</name>
+        <name>KNX_DL</name>
         <file>
-          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Aux.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_DL\Src\KNX_DL.c</name>
         </file>
+      </group>
+      <group>
+        <name>KNX_Ph</name>
         <file>
           <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Ph.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_TPUart.c</name>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Ph_Aux.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\KNX_Lib\KNX_Ph\Src\KNX_Ph_TPUart.c</name>
         </file>
       </group>
     </group>

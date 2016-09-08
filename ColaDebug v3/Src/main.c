@@ -351,17 +351,6 @@ void StartDefaultTask(void const * argument)
   
   /* USER CODE BEGIN 5 */
   osDelay(200);
-  /** Attempt to reset */
-  for(i=0; i<10; i++)
-  {  
-    if(KNX_Ph_Reset_request() == PH_ERROR_NONE)
-    {
-      if(KNX_Ph_Reset_request() == PH_ERROR_NONE)
-      {
-        break;
-      }
-    }
-  }
 
   /* Infinite loop */
   for(;;)

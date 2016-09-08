@@ -1,10 +1,10 @@
 [StLinkDriver]
-stlinkserialNo=30303031
+stlinkserialNo=EE5626A6
 stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=-1026430542
+Checksum=901064586
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
