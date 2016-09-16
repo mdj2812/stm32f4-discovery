@@ -4,7 +4,7 @@ stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=-492307978
+Checksum=2133849950
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -46,16 +46,16 @@ Show=1 1
 Sort=4 0
 [InterruptStripe]
 Sort=1
-Title0=USART2_IRQ
+Title0=PendSV
 Setup0=3 1 3 0 1 0 0 8640694671577710644 8640698272772123142
-Title1=SysTick
-Setup1=3 1 3 0 1 0 0 8640694671577710644 8640698272772123142
-Title2=PendSV
+Title1=USART3_IRQ
+Setup1=3 1 3 0 1 0 0 1 14984264722415631
+Title2=USART2_IRQ
 Setup2=3 1 3 0 1 0 0 8640694671577710644 8640698272772123142
-Title3=SVCall
+Title3=SysTick
 Setup3=3 1 3 0 1 0 0 8640694671577710644 8640698272772123142
-Title4=
-Setup4=3 1 3 0 1 0 0 918458449658640216 6854947
+Title4=SVCall
+Setup4=3 1 3 0 1 0 0 8640694671577710644 8640698272772123142
 [EventStripe]
 Title0=ITM4
 Setup0=1 1 3 1 1 0 0 0 4294967295
@@ -138,8 +138,7 @@ ShowTiming=1
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Inc\trcBase.h}.82.1" 0 0 1 "" 0 "" 0
-Count=1
+Count=0
 [Aliases]
 A0=_ "C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c" "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c"
 A1=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""

@@ -29,7 +29,16 @@
   * @brief    KNX Library Constants
   * @{
   */
-
+   
+/** @defgroup True_False True or False
+  * @{
+  */
+#define FALSE                         ((uint8_t) 0x00)
+#define TRUE                          ((uint8_t) 0x01)
+/**
+  * @}
+  */
+   
 /** @defgroup 8_Bits_Masks 8 bits masks
   * @{
   */
@@ -102,7 +111,7 @@
   * @brief    Timeout Definition
   * @{
   */
-#define KNX_DEFAULT_TIMEOUT     ((TickType_t)2000)               /*!< Default Timeout 500 ms*/
+#define KNX_DEFAULT_TIMEOUT     ((TickType_t)500)               /*!< Default Timeout 500 ms*/
 #define KNX_MAX_DELAY           ((TickType_t)0xFFFFFFFFU)       /*!< Max Delay: Infinity   */
 /**
   * @}

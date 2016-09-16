@@ -31,14 +31,14 @@
   */
 
 /* External functions --------------------------------------------------------*/
-/** @defgroup Debug_UART_External_Functions Debug UART External Functions
+/** @defgroup   Debug_UART_External_Functions Debug UART External Functions
   * @brief      External functions to be used in \ref Debug module
   * @{
   */
-extern void debug_uart_isr_rx (void);
-extern void debug_uart_isr_tx (void);
 extern void debug_uart_isr_begin (void);
 extern void debug_uart_isr_end (void);
+extern void debug_uart_isr_rx (void);
+extern void debug_uart_isr_tx (void);
 /**
   * @}
   */

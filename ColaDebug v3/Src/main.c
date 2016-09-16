@@ -350,8 +350,7 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void const * argument)
 {
   uint8_t data;
-  
-  /* USER CODE BEGIN 5 */
+    
   KNX_DL_Init();
 
   uint8_t Tx_FT = 1;
@@ -361,7 +360,7 @@ void StartDefaultTask(void const * argument)
   uint8_t Tx_LSDU[] = "ABCD EFGH";
   uint8_t Tx_LG = 9;
   KNX_DL_Data_req(Tx_FT, Tx_AT, Tx_DA, Tx_Pri, Tx_LSDU, Tx_LG);
-  KNX_DL_Data_rec(&Tx_FT, &Tx_AT, &Tx_DA, &Tx_Pri, Tx_LSDU, &Tx_LG);
+  //KNX_DL_Data_rec(&Tx_FT, &Tx_AT, &Tx_DA, &Tx_Pri, Tx_LSDU, &Tx_LG);
   /* Infinite loop */
   for(;;)
   {

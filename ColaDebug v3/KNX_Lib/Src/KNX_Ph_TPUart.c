@@ -28,7 +28,20 @@
 /** @defgroup KNX_PH_TPUart KNX Physical Layer TPUart
   * @{
   */
-    
+
+/* External functions --------------------------------------------------------*/
+/** @defgroup   KNX_PH_TPUart_External_Functions KNX PH TPUART External Functions
+  * @brief      External functions to be used in \ref KNX_PH_Sup module
+  * @{
+  */
+extern void knx_uart_isr_begin (void);
+extern void knx_uart_isr_end (void);
+extern void knx_uart_isr_rx (void);
+extern void knx_uart_isr_tx (void);
+/**
+  * @}
+  */
+
 /* Private variables --------------------------------------------------------*/
 /** @defgroup KNX_PH_TPUART_Private_Variables KNX TPUart Private Variables
   * @{
@@ -197,6 +210,19 @@ void TPUart_isr(void)
 {
   /* UART IRQ Handler function provided by driver. */
   HAL_UART_IRQHandler(&knx_huart);
+  
+  knx_uart_isr_begin ();
+    
+  /* UART in mode Receiver ---------------------------------------------------*/
+  knx_uart_isr_rx();
+  
+  /* UART in mode Transmitter ------------------------------------------------*/
+  if((HAL_UART_GetState(&knx_huart) & HAL_UART_STATE_BUSY_TX) == HAL_UART_STATE_BUSY_TX)
+  {
+    knx_uart_isr_tx();
+  }
+  
+  knx_uart_isr_end();
 }
 /**
   * @}
