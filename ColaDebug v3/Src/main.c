@@ -85,16 +85,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  
+
+  /* USER CODE BEGIN 2 */
   if(DebugInit() == PH_Debug_ERROR_INIT)
   {
     return 0;
   }
   
   KNX_Ph_Init();
-
-  /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -183,7 +181,7 @@ void SystemClock_Config(void)
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
   /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 }
 
 /** Configure pins as 
@@ -349,6 +347,8 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
+
+  /* USER CODE BEGIN 5 */
   uint8_t data;
     
   KNX_DL_Init();
@@ -365,7 +365,6 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
     KNX_Ph_RecData(&data, KNX_MAX_DELAY);
-    osDelay(1);
   }
   /* USER CODE END 5 */ 
 }

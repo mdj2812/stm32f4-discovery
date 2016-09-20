@@ -53,6 +53,14 @@
 /**
   * @}
   */
+   
+/** @defgroup Bittime
+  * @{
+  */
+#define TBIT                            ((uint32_t)104)    /*!< 1/9600 s, 104 us */
+/**
+  * @}
+  */
 
 /** @defgroup UART_Control_To Field of Services to UART
   * @brief    Services to UART

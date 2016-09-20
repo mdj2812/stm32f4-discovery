@@ -303,6 +303,7 @@ uint8_t KNX_Ph_WaitForWithMask(uint8_t *res, uint8_t resMask, uint32_t timeout)
 uint8_t KNX_Ph_Reset(void)
 {
   uint8_t ret;
+  uint32_t timeout = 6;
   
   /** Send ::Ph_Reset request. */
   if(KNX_Ph_GetState() != PH_RESET)
@@ -316,9 +317,9 @@ uint8_t KNX_Ph_Reset(void)
     /** \b If encounter a problem, return ::PH_ERROR_REQUEST  */
     return PH_ERROR_REQUEST;
   }
-    
+  
   /** Waiting for the ::Reset_indication. */
-  ret = KNX_Ph_WaitFor(Reset_indication, 5000);
+  ret = KNX_Ph_WaitFor(Reset_indication, KNX_DEFAULT_TIMEOUT);
   if(ret == PH_ERROR_NONE)
   {
     /** \b If receive the response, set state to ::PH_NORMAL. */

@@ -284,7 +284,11 @@ void DebugRXTask(void * argument)
       }
       else if(RX_buffer_indice == 3)
       {
-        RX_buffer_indice=0;
+        RX_buffer_indice=2;
+        RX_buffer[1] = RX_buffer[2];
+        
+        RX_buffer[RX_buffer_indice] = temp;
+        RX_buffer_indice++;
       }
     }
   }

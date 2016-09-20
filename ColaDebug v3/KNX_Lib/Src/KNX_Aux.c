@@ -245,7 +245,6 @@ void KNX_systick_isr(void)
   if(timer_state == TIMER_RUNNING)
   {
     timer_tick++;
-    printf("%d", HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_9));
   }
 }
 
