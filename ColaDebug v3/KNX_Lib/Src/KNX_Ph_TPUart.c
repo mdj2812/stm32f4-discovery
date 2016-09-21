@@ -211,16 +211,13 @@ void TPUart_isr(void)
   /* UART IRQ Handler function provided by driver. */
   HAL_UART_IRQHandler(&knx_huart);
   
-  knx_uart_isr_begin ();
+  knx_uart_isr_begin();
     
   /* UART in mode Receiver ---------------------------------------------------*/
   knx_uart_isr_rx();
   
   /* UART in mode Transmitter ------------------------------------------------*/
-  if((HAL_UART_GetState(&knx_huart) & HAL_UART_STATE_BUSY_TX) == HAL_UART_STATE_BUSY_TX)
-  {
-    knx_uart_isr_tx();
-  }
+  knx_uart_isr_tx();
   
   knx_uart_isr_end();
 }

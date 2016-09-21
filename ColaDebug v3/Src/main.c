@@ -350,7 +350,7 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN 5 */
   uint8_t data;
-    
+
   KNX_DL_Init();
 
   uint8_t Tx_FT = 1;

@@ -12,7 +12,7 @@
   *              + State functions
   ******************************************************************************
   */
-
+    
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include "KNX_Ph.h"
@@ -21,6 +21,7 @@
 #include "KNX_def.h"
 #include "cola.h"
 #include "debug.h"
+#include "debug_uart.h"
 
 /** @addtogroup KNX_Lib
   * @{
@@ -57,6 +58,8 @@ static unsigned char KNX_PH_ERROR_DEBUGMSG[] = "[KNX PH]Error code: XX\r\n";
 /** \brief ::KNX_PH_ERROR_DEBUGMSG digits indice. */
 #define KNX_PH_ERROR_DEBUGMSG_INDICE ((uint8_t)20)
 
+/** \brief flag for TPUART TX. */
+static uint8_t TPUART_TX_FLAG;
 /** \brief flag for TPUART RX. */
 static uint8_t TPUART_RX_FLAG;
 /** character received from UART */
@@ -96,6 +99,10 @@ void knx_uart_isr_end (void)
   */
 void knx_uart_isr_tx(void)
 {
+  if(TPUART_TX_FLAG == TRUE)
+  {
+    
+  }
 }
 
 /**
@@ -135,8 +142,11 @@ static void     KNX_Ph_DebugMessage(uint8_t data, DEBUG_Type_t type);
   * @brief      Initialize the \ref KNX_PH module.
   * @retval     Error code, See \ref PH_Error_Code.
   */
+
 uint8_t KNX_Ph_Init(void)
 {  
+  //uint8_t data = 'A';
+  
   /** Set state to ::PH_NOINIT */
   KNX_Ph_SetState(PH_NOINIT);
   
@@ -153,6 +163,8 @@ uint8_t KNX_Ph_Init(void)
     return PH_ERROR_INIT;
   }
   TPUART_RX_FLAG = FALSE;
+  TPUART_TX_FLAG = FALSE;
+  //debug_uart_send(&data, 1);
   
   return PH_ERROR_NONE;
 }

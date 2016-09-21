@@ -72,6 +72,7 @@ uint8_t debug_uart_init(void);
 /* UART utilities functions ***************************************************/
 Debug_Uart_Status_t debug_uart_send (uint8_t *data, uint16_t size);
 Debug_Uart_Status_t debug_uart_receive (uint8_t *data, uint16_t size);
+UART_HandleTypeDef getDebug_huart(void);
 void debug_uart_isr(void);
 /**
   * @}

@@ -104,7 +104,7 @@ uint8_t debug_uart_init(void)
   * @param      data:  pointer to the data buffer.
   * @param      size:  lenghth of the buffer.
   */
-Debug_Uart_Status_t debug_uart_send (uint8_t *data, uint16_t size)
+Debug_Uart_Status_t debug_uart_send(uint8_t *data, uint16_t size)
 {
   if((data == NULL ) || (size == 0U)) 
   {
@@ -203,10 +203,7 @@ void debug_uart_isr(void)
   debug_uart_isr_rx();
   
   /* UART in mode Transmitter ------------------------------------------------*/
-  if((HAL_UART_GetState(&debug_huart) & HAL_UART_STATE_BUSY_TX) == HAL_UART_STATE_BUSY_TX)
-  {
-    debug_uart_isr_tx();
-  }
+  debug_uart_isr_tx();
   
   debug_uart_isr_end();
 }
