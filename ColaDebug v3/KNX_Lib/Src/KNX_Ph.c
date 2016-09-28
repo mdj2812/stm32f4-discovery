@@ -144,9 +144,7 @@ static void     KNX_Ph_DebugMessage(uint8_t data, DEBUG_Type_t type);
   */
 
 uint8_t KNX_Ph_Init(void)
-{  
-  //uint8_t data = 'A';
-  
+{    
   /** Set state to ::PH_NOINIT */
   KNX_Ph_SetState(PH_NOINIT);
   
@@ -164,7 +162,6 @@ uint8_t KNX_Ph_Init(void)
   }
   TPUART_RX_FLAG = FALSE;
   TPUART_TX_FLAG = FALSE;
-  //debug_uart_send(&data, 1);
   
   return PH_ERROR_NONE;
 }

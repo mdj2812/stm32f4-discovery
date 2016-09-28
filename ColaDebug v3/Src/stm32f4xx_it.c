@@ -44,6 +44,9 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern UART_HandleTypeDef debug_huart;
+extern UART_HandleTypeDef knx_huart;
+
 extern TIM_HandleTypeDef htim1;
 
 /******************************************************************************/
@@ -91,11 +94,11 @@ void TIM1_UP_TIM10_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-  debug_uart_isr();
+  
   /* USER CODE END USART2_IRQn 0 */
-
+  HAL_UART_IRQHandler(&debug_huart);
   /* USER CODE BEGIN USART2_IRQn 1 */
-
+  debug_uart_isr();
   /* USER CODE END USART2_IRQn 1 */
 }
 
@@ -105,11 +108,11 @@ void USART2_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
-  TPUart_isr();
+  
   /* USER CODE END USART3_IRQn 0 */
-
+  HAL_UART_IRQHandler(&knx_huart);
   /* USER CODE BEGIN USART3_IRQn 1 */
-
+  TPUart_isr();
   /* USER CODE END USART3_IRQn 1 */
 }
 

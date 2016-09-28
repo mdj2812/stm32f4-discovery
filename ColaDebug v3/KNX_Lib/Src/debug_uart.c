@@ -48,7 +48,7 @@ extern void debug_uart_isr_tx (void);
   * @{
   */
 /** \brief UART Handler */
-static UART_HandleTypeDef debug_huart;
+UART_HandleTypeDef debug_huart;
 /**
   * @}
   */
@@ -193,10 +193,7 @@ Debug_Uart_Status_t debug_uart_receive (uint8_t *data, uint16_t size)
   * @brief      UART interrupt routines.
   */
 void debug_uart_isr(void)
-{  
-  /* UART IRQ Handler function provided by driver. */
-  HAL_UART_IRQHandler(&debug_huart);
-  
+{    
   debug_uart_isr_begin ();
     
   /* UART in mode Receiver ---------------------------------------------------*/

@@ -13,6 +13,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
+#include "stm32f4xx_hal.h"
 #include "KNX_Aux.h"
 #include "KNX_Ph_TPUart.h"
 #include "stm32f4xx_hal.h"
@@ -47,7 +48,7 @@ extern void knx_uart_isr_tx (void);
   * @{
   */
 /** \brief UART Handler */
-static UART_HandleTypeDef knx_huart;
+UART_HandleTypeDef knx_huart;
 /**
   * @}
   */
@@ -85,6 +86,9 @@ uint8_t KNX_PH_TPUart_init(void)
   
   __HAL_UART_ENABLE_IT(&knx_huart, UART_IT_RXNE);  /** Activate Flag Receptie */
   __HAL_UART_ENABLE_IT(&knx_huart, UART_IT_TC);    /** Activate Flag TX       */
+  
+  /* Set the PD7 to 1 to make the baud rate of TP-UART2 to 9600 */
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
 
   return TPUart_OK;
 }
@@ -207,10 +211,7 @@ uint8_t KNX_PH_TPUart_Receive(uint8_t *data, uint16_t size)
   * @brief      UART interrupt routines.
   */
 void TPUart_isr(void)
-{
-  /* UART IRQ Handler function provided by driver. */
-  HAL_UART_IRQHandler(&knx_huart);
-  
+{  
   knx_uart_isr_begin();
     
   /* UART in mode Receiver ---------------------------------------------------*/

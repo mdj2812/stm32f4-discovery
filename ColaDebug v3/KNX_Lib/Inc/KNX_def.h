@@ -33,8 +33,8 @@
 /** @defgroup True_False True or False
   * @{
   */
-#define FALSE                         ((uint8_t) 0x00)
-#define TRUE                          ((uint8_t) 0x01)
+#define FALSE                         ((uint8_t) 0x00)     /*!< False   */
+#define TRUE                          ((uint8_t) 0x01)     /*!< True    */
 /**
   * @}
   */
@@ -54,7 +54,7 @@
   * @}
   */
    
-/** @defgroup Bittime
+/** @defgroup Bittime Bit time
   * @{
   */
 #define TBIT                            ((uint32_t)104)    /*!< 1/9600 s, 104 us */
