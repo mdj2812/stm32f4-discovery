@@ -71,7 +71,7 @@ UART_HandleTypeDef knx_huart;
 uint8_t KNX_PH_TPUart_init(void)
 {
   knx_huart.Instance = USART3;
-  knx_huart.Init.BaudRate = 9600;
+  knx_huart.Init.BaudRate = 19200;
   knx_huart.Init.WordLength = UART_WORDLENGTH_9B;
   knx_huart.Init.StopBits = UART_STOPBITS_1;
   knx_huart.Init.Parity = UART_PARITY_EVEN;
@@ -87,9 +87,15 @@ uint8_t KNX_PH_TPUart_init(void)
   __HAL_UART_ENABLE_IT(&knx_huart, UART_IT_RXNE);  /** Activate Flag Receptie */
   __HAL_UART_ENABLE_IT(&knx_huart, UART_IT_TC);    /** Activate Flag TX       */
   
-  /* Set the PD7 to 1 to make the baud rate of TP-UART2 to 9600 */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_7, GPIO_PIN_SET);
-
+  HAL_Delay(1000);
+  /* Set the RESn Pin to 1 and toggle it to 0 to start the reset behavior of the TP-UART2 */
+  HAL_GPIO_WritePin(GPIOD, TPUART_RESn_Pin, GPIO_PIN_SET);
+  /* Wait for 1 s */
+  HAL_Delay(50);
+  HAL_GPIO_TogglePin(GPIOD, TPUART_RESn_Pin);
+  HAL_Delay(50);
+  HAL_GPIO_DeInit(GPIOD, TPUART_RESn_Pin);
+  
   return TPUart_OK;
 }
 /**

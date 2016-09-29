@@ -103,23 +103,6 @@ uint8_t KNX_DL_Init(void)
     
   /** Set state to ::DL_RESET */
   KNX_DL_SetState(DL_RESET);
-
-  /** Send reset quest until reset indication is received */
-  for(i=0; i<retryTimes; i++)
-  {
-    if(KNX_Ph_Reset() == PH_ERROR_NONE)
-    {
-      /** Send state quest to confirm the state */
-      if(KNX_Ph_State(&res) == PH_ERROR_NONE && res == State_indication)
-      {
-        HAL_GPIO_TogglePin(GPIOD, LD4_Pin);
-        
-        KNX_DL_SetState(DL_NORMAL);
-
-        return DL_ERROR_NONE;
-      }
-    }
-  }
    
   KNX_DL_SetState(DL_POWER_ON);
    

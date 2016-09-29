@@ -4,7 +4,7 @@ stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=278966677
+Checksum=1649547954
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -138,7 +138,8 @@ ShowTiming=1
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Count=0
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.95.3" 0 0 1 "" 0 "" 0
+Count=1
 [Aliases]
 A0=_ "C:\Users\Public\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c" "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Src\main.c"
 A1=_ "C:\Users\mdj28\Documents\stm32f4-discovery\ColaDebug v3\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""
